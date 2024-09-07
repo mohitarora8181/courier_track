@@ -2,6 +2,7 @@ import express from "express";
 const app  = express();
 
 import puppeteer from "puppeteer";
+import "puppeteer-core";
 
 const browser = await puppeteer.launch({
     headless:true,
