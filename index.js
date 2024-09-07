@@ -48,3 +48,5 @@ app.use((req,res)=>{
 app.listen(4000,()=>{
     console.log("Listing on port 4000")
 })
+
+export default app
