@@ -1,4 +1,5 @@
 import express from "express";
+import serverless from "serverless-http";
 const app  = express();
 
 import puppeteer from "puppeteer";
@@ -48,3 +49,5 @@ app.use((req,res)=>{
 app.listen(4000,()=>{
     console.log("Listing on port 4000")
 })
+
+export default serverless(app);
