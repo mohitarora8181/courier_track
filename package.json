@@ -5,20 +5,16 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "./node_modules/.bin/netlify-lambda serve functions",
-    "build": "./node_modules/.bin/netlify-lambda build functions"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@netlify/functions": "^2.8.1",
-    "@types/express": "^4.17.21",
     "express": "^4.19.2",
-    "netlify-cli": "^17.35.0",
-    "netlify-lambda": "^2.0.16",
-    "puppeteer": "^23.3.0",
-    "serverless-http": "^3.2.0"
+    "puppeteer": "^23.3.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
