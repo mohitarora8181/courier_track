@@ -50,8 +50,4 @@ router.use((req,res)=>{
 
 app.use('/.netlify/functions/index', router);
 
-app.listen(4000,()=>{
-    console.log("Listing on port 4000")
-})
-
 export default serverless(app);
