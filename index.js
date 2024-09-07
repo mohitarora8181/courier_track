@@ -1,4 +1,4 @@
-import express, { app } from "express";
+import express from "express";
 const app = express();
 
 import puppeteer from "puppeteer";
