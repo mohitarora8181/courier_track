@@ -1,11 +1,11 @@
 import express from "express";
 const app = express();
 
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 
 const browser = await puppeteer.launch({
-    headless: true,
-    defaultViewport: null
+    executablePath: '/usr/bin/google-chrome-stable',
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
 });
 
 const page = await browser.newPage();
