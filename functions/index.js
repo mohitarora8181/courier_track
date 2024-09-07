@@ -48,7 +48,7 @@ router.use((req,res)=>{
     return res.status(404).send("Page not found")
 })
 
-app.use("/api/",router);
+app.use('/.netlify/functions/index', router);
 
 app.listen(4000,()=>{
     console.log("Listing on port 4000")
