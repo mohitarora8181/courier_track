@@ -1,7 +1,7 @@
 import express from "express";
 const app  = express();
 
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 
 const browser = await puppeteer.launch({
     headless:true,
@@ -48,5 +48,3 @@ app.use((req,res)=>{
 app.listen(4000,()=>{
     console.log("Listing on port 4000")
 })
-
-export default app
