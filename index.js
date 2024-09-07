@@ -1,8 +1,7 @@
 import express from "express";
 const app  = express();
 
-import puppeteer from "puppeteer";
-import "puppeteer-core";
+import puppeteer from "puppeteer-core";
 
 const browser = await puppeteer.launch({
     headless:true,
