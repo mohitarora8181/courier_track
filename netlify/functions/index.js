@@ -1,4 +1,4 @@
-import express from "express";
+import express , {Router} from "express";
 import serverless from "serverless-http";
 const app  = express();
 
@@ -11,11 +11,13 @@ const browser = await puppeteer.launch({
 
 const page = await browser.newPage();
 
-app.get("/",(req,res)=>{
+const router = Router();
+
+router.get("/",(req,res)=>{
     return res.send("This app is made by Mohit - for more information contact 9667067062");
 });
 
-app.get("/order/track/",async (req,res)=>{
+router.get("/order/track/",async (req,res)=>{
     try {
         await page.goto(`https://shipeasy.tech/app/public/tracking/${req.query.awb}`, { waitUntil: "domcontentloaded" });
 
@@ -42,9 +44,11 @@ app.get("/order/track/",async (req,res)=>{
     }
 })
 
-app.use((req,res)=>{
+router.use((req,res)=>{
     return res.status(404).send("Page not found")
 })
+
+app.use("/api/",router);
 
 app.listen(4000,()=>{
     console.log("Listing on port 4000")
