@@ -46,7 +46,7 @@ app.use((req, res) => {
 })
 
 app.use(cors({
-    origin:["https://http://127.0.0.1:5500/","https://jkrobotics.in/"]
+    origin:["http://127.0.0.1:5500/","https://jkrobotics.in/"]
 }))
 
 app.listen(4000, () => {
