@@ -4,11 +4,12 @@ const app = express();
 
 import puppeteer from "puppeteer";
 
+app.use(cors());
+
 const browser = await puppeteer.launch({
     headless: true,
     defaultViewport: null
 });
-
 const page = await browser.newPage();
 app.get("/", (req, res) => {
     return res.send("This app is made by Mohit - for more information contact 9667067062");
@@ -44,8 +45,6 @@ app.get("/order/track/", async (req, res) => {
 app.use((req, res) => {
     return res.status(404).send("Page not found")
 })
-
-app.use(cors());
 
 app.listen(4000, () => {
     console.log("Listing on port 4000")
