@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 const app = express();
 
 import puppeteer from "puppeteer";
@@ -43,6 +44,10 @@ app.get("/order/track/", async (req, res) => {
 app.use((req, res) => {
     return res.status(404).send("Page not found")
 })
+
+app.use(cors({
+    origin:["https://http://127.0.0.1:5500/","https://jkrobotics.in/"]
+}))
 
 app.listen(4000, () => {
     console.log("Listing on port 4000")
