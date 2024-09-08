@@ -45,9 +45,7 @@ app.use((req, res) => {
     return res.status(404).send("Page not found")
 })
 
-app.use(cors({
-    origin:'*'
-}))
+app.use(cors());
 
 app.listen(4000, () => {
     console.log("Listing on port 4000")
