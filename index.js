@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
 const app = express();
+import { config } from "dotenv";
 
 import puppeteer from "puppeteer";
 
 app.use(cors());
+config();
 
 const browser = await puppeteer.launch({
     headless: true,
@@ -40,7 +42,24 @@ app.get("/order/track/", async (req, res) => {
     } catch (e) {
         res.json({ error: true, message: e })
     }
-})
+});
+
+app.get("/sm/track", async (req, res) => {
+    try {
+        await fetch(`https://shipping-api.com/app/api/v1/track-order?awb_number=${req.query.awb}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "public-key": process.env.SHIPMOZO_PUBLIC_KEY,
+                "private-key": process.env.SHIPMOZO_PRIVATE_KEY
+            }
+        }).then(async (resp) => {
+            const { data } = await resp.json();
+            res.json(data);
+        });
+    } catch (e) {
+        res.json({ error: true, message: e })
+    }
+});
 
 app.use((req, res) => {
     return res.status(404).send("Page not found")
